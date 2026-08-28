@@ -1,51 +1,51 @@
-# Tu Primer Control del Impulso — Backend
+# Tu Primer Control del Impulso — Lead Magnet
 
-Backend del lead magnet para **Protocolo de Resistencia al Contacto Cero™**.
+Lead magnet para **Protocolo de Resistencia al Contacto Cero™**.
 
-## Qué es esto (Fase 2)
+## Qué hay en esta fase (Fase 3)
 
-Un único endpoint (`/api/subscribe`) que por ahora **recibe el nombre y el email de quien
-se registra, y responde que todo salió bien** — todavía no manda ningún email de verdad.
-Eso se conecta en la Fase 3, cuando sumemos Resend.
+- **`/` (`index.html`)** — página de captura: nombre, email, checkbox de consentimiento
+  y botón que se activa recién cuando se marca el checkbox.
+- **`/herramienta` (`herramienta/index.html`)** — placeholder. La herramienta interactiva
+  real se construye en la Fase 4.
+- **`/api/subscribe`** — ahora conectado de verdad con Resend: al enviar el formulario,
+  manda un email de bienvenida con un botón que lleva a `/herramienta`.
 
-## Cómo desplegarlo en Vercel (gratis)
+Pase lo que pase con Resend (falle o no), la persona siempre es redirigida a
+`/herramienta` después de enviar el formulario — la captura de email es un
+beneficio extra, nunca un candado para acceder a la herramienta gratuita.
 
-No hace falta saber programar para estos pasos, son todos con clics.
+## Variables de entorno que hay que cargar en Vercel (ahora sí)
 
-1. **Creá una cuenta en GitHub** (si no tenés una): [github.com](https://github.com) — es gratis.
-2. **Creá un repositorio nuevo** en GitHub y subí esta carpeta completa
-   (`tu-primer-control-del-impulso`) ahí. La forma más simple sin usar la
-   terminal es con **GitHub Desktop** ([desktop.github.com](https://desktop.github.com)):
-   abrís la app, elegís "Add local folder", seleccionás esta carpeta, y le das "Publish repository".
-3. **Creá una cuenta en Vercel**: [vercel.com](https://vercel.com) — podés entrar directamente
-   con tu cuenta de GitHub, es un solo clic.
-4. En Vercel, tocá **"Add New Project"**, elegí el repositorio que acabás de subir, y
-   tocá **"Deploy"**. No hace falta cambiar ninguna configuración por ahora.
-5. En un par de minutos vas a tener una URL como `tu-proyecto.vercel.app` — ese es tu
-   backend, ya funcionando.
-
-## Variables de entorno (cuando lleguemos a la Fase 3)
-
-Esto **todavía no hace falta hacerlo** — el código de esta fase no las usa todavía.
-Cuando conectemos Resend, vas a tener que cargar dos valores directamente en Vercel
-(nunca en el código, nunca en un chat):
+A diferencia de la Fase 2, **este código ya usa estas dos variables**, así que hay
+que cargarlas para que el envío de emails funcione:
 
 1. En tu proyecto dentro de Vercel, andá a **Settings → Environment Variables**.
 2. Agregá:
-   - `RESEND_API_KEY` → tu API key de Resend (la que ya generaste)
+   - `RESEND_API_KEY` → tu API key de Resend
    - `RESEND_FROM_EMAIL` → `hola@contactocero.tuherramientadigital.com`
-3. Guardá, y volvé a desplegar el proyecto para que tome los cambios (Vercel te lo va a ofrecer solo).
+3. Guardá, y volvé a desplegar el proyecto (Vercel te va a ofrecer un botón para
+   redesplegar apenas guardes las variables).
 
-## Probar que funciona (una vez desplegado)
+**Nunca pegues estos valores en ningún archivo de código ni se los muestres a
+nadie fuera del panel de Vercel.**
 
-Podés probar el endpoint enviándole una petición POST con `name` y `email`. Por ejemplo,
-desde una herramienta como [Postman](https://www.postman.com) o con este comando en la
-terminal (opcional, no obligatorio):
+## Cómo actualizar el proyecto ya desplegado
 
-```
-curl -X POST https://tu-proyecto.vercel.app/api/subscribe \
-  -H "Content-Type: application/json" \
-  -d '{"name":"Prueba","email":"prueba@ejemplo.com"}'
-```
+Como el repositorio de GitHub ya existe y ya está conectado a Vercel, no hace
+falta crear nada nuevo:
 
-Deberías recibir: `{"success":true}`
+1. Subí estos archivos nuevos/actualizados al mismo repositorio de GitHub
+   (`tu-primer-control-del-impulso`), reemplazando `api/subscribe.js` y sumando
+   `index.html` y la carpeta `herramienta/`.
+2. Vercel va a detectar el cambio y volver a desplegar automáticamente — no
+   hace falta hacer nada más ahí.
+
+## Pendiente para la Fase 4
+
+- Construir la herramienta interactiva real en `/herramienta` (reemplaza el
+  placeholder actual).
+- Opcional: guardar cada contacto en una **Audience** de Resend, para poder
+  mandarle campañas más adelante (no solo el email de bienvenida). Esto
+  requiere crear una Audience desde el panel de Resend primero — si te
+  interesa, lo sumamos como un paso aparte.
