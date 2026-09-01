@@ -45,11 +45,12 @@ export default async function handler(req, res) {
       </p>
 
       <p style="font-size:15px; line-height:24px; color:#3a2418; margin:0 0 16px;">
-        En los próximos 3 minutos vas a atravesar, paso a paso, una versión
-        guiada de la misma técnica que usamos en Protocolo de Resistencia al
-        Contacto Cero™ para bajar la intensidad del impulso en tiempo real.
-        No es una lectura — es algo que haces ahora, con tu propio cuerpo,
-        mientras avanza un cronómetro en pantalla.
+        Vas a atravesar una mini experiencia guiada de 3 pasos: primero tu
+        Checklist de Emergencia de 60 Segundos real, con un cronómetro en
+        pantalla y seis acciones concretas para hacer una por una — y
+        después una probadita de otras dos herramientas del sistema, todo
+        pensado para el momento exacto en que aparece la tentación de
+        escribirle.
       </p>
 
       <p style="font-size:15px; line-height:24px; color:#3a2418; margin:0 0 16px;">
@@ -61,14 +62,14 @@ export default async function handler(req, res) {
 
       <p style="font-size:15px; line-height:24px; color:#3a2418; margin:0 0 28px;">
         Haz clic en el botón de abajo para entrar ahora mismo. Te toma
-        literalmente 3 minutos, y vas a salir con algo concreto en la mano.
+        unos 3 minutos, y vas a salir con algo concreto en la mano.
       </p>
 
       <div style="text-align:center;">
         <a href="https://tu-primer-control-del-impulso.vercel.app/herramienta"
            style="display:inline-block; background-color:#8A3E22; color:#F5EDE3; text-decoration:none;
                   font-weight:bold; font-size:16px; padding:16px 28px; border-radius:12px;">
-          Descubrir mi resultado ahora
+          Empezar mi Control del Impulso
         </a>
       </div>
 
