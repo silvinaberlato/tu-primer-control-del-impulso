@@ -48,10 +48,11 @@
   @keyframes fadeUpInicial{ from{ opacity:0; transform:translateY(14px) scale(0.95); } to{ opacity:1; transform:translateY(0) scale(1); } }
   .lm-header .eyebrow{ opacity:0; animation:fadeUpInicial 600ms cubic-bezier(.23,1,.32,1) 40ms forwards; }
   .lm-header h1{ opacity:0; animation:fadeUpInicial 600ms cubic-bezier(.23,1,.32,1) 110ms forwards; }
-  .main-tabs{ opacity:0; animation:fadeUpInicial 600ms cubic-bezier(.23,1,.32,1) 180ms forwards; }
-  #tab-experiencia .step-label{ opacity:0; animation:fadeUpInicial 600ms cubic-bezier(.23,1,.32,1) 250ms forwards; }
-  #tab-experiencia .progress-track{ opacity:0; animation:fadeUpInicial 600ms cubic-bezier(.23,1,.32,1) 320ms forwards; }
-  #panel-1 .step-intro{ opacity:0; animation:fadeUpInicial 600ms cubic-bezier(.23,1,.32,1) 390ms forwards; }
+  .nota-email{ opacity:0; animation:fadeUpInicial 600ms cubic-bezier(.23,1,.32,1) 180ms forwards; }
+  .main-tabs{ opacity:0; animation:fadeUpInicial 600ms cubic-bezier(.23,1,.32,1) 250ms forwards; }
+  #tab-experiencia .step-label{ opacity:0; animation:fadeUpInicial 600ms cubic-bezier(.23,1,.32,1) 320ms forwards; }
+  #tab-experiencia .progress-track{ opacity:0; animation:fadeUpInicial 600ms cubic-bezier(.23,1,.32,1) 390ms forwards; }
+  #panel-1 .step-intro{ opacity:0; animation:fadeUpInicial 600ms cubic-bezier(.23,1,.32,1) 460ms forwards; }
 
   .main-tabs{ display:flex; gap:8px; margin:22px 0 26px; flex-wrap:wrap; }
   .main-tab{
@@ -64,6 +65,11 @@
   .main-tab-content{ display:none; }
   .main-tab-content.active{ display:block; animation:panelIn 420ms cubic-bezier(.23,1,.32,1) both; }
 
+  .nota-email{
+    text-align:center; font-size:0.82rem; color:var(--ink-soft); line-height:1.5;
+    background:var(--sage-bg); border:1px solid var(--sage-line); border-radius:12px;
+    padding:12px 16px; margin:20px 0 8px;
+  }
   .posts-intro{ text-align:center; font-size:0.9rem; color:var(--ink-soft); line-height:1.6; margin-bottom:24px; }
   .post-card{ background:var(--cream); border:1px solid var(--card-line); border-radius:18px; padding:24px; margin-bottom:18px; }
   .post-card h3{ font-size:1.08rem; color:var(--berry); margin-bottom:14px; line-height:1.32; }
@@ -247,7 +253,7 @@
 
   @media (prefers-reduced-motion:reduce){
     *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
-    .lm-header .eyebrow, .lm-header h1, .main-tabs, #tab-experiencia .step-label, #tab-experiencia .progress-track, #panel-1 .step-intro{
+    .lm-header .eyebrow, .lm-header h1, .nota-email, .main-tabs, #tab-experiencia .step-label, #tab-experiencia .progress-track, #panel-1 .step-intro{
       opacity:1 !important; transform:none !important;
     }
   }
@@ -266,6 +272,8 @@
       <span class="eyebrow"><span class="dot"></span>Mini Experiencia Guiada</span>
       <h1>Tu Primer Control del Impulso™</h1>
     </div>
+
+    <p class="nota-email">Te mandamos un email de bienvenida — si no lo ves en unos minutos, revisa spam o correo no deseado, así no te pierdes el contenido que sigue.</p>
 
     <div class="main-tabs">
       <button class="main-tab active" id="tabbtn-experiencia" onclick="cambiarTabPrincipal('experiencia')">Tu experiencia</button>
@@ -413,27 +421,27 @@
         <div class="carousel-wrap">
           <div class="carousel-track" id="carousel-track">
             <div class="testimonio-card active" data-idx="0">
-              <p>"Acabo de usar Tu Primer Control del Impulso™ y... yo antes pensaba que tenía que sentirme tranquila para poder resistir las ganas de escribirle. Por eso, cada vez que la ansiedad me ganaba, sentía que ya había perdido la batalla de entrada. Ahora me doy cuenta de que puedo sentir la ansiedad entera, con todo su peso, y aun así no escribirle — las dos cosas pueden pasar al mismo tiempo. No hacía falta calmarme primero."</p>
+              <p>"Recién terminé Tu Primer Control del Impulso™ y necesito contarlo. Siempre pensé que tenía que sentirme tranquila para poder resistir las ganas de escribirle — por eso, cada vez que la ansiedad me ganaba, sentía que ya había perdido la batalla de entrada. Ahora entiendo que puedo sentir la ansiedad entera, con todo su peso, y aun así no escribirle. Las dos cosas pueden pasar al mismo tiempo. No hacía falta calmarme primero."</p>
               <span class="testimonio-nombre">— Valentina</span>
             </div>
             <div class="testimonio-card" data-idx="1">
-              <p>"Acabo de usar Tu Primer Control del Impulso™ y... yo antes pensaba que si todavía lo extrañaba tanto, era porque en el fondo no debería haber cortado el contacto. Ahora me doy cuenta de que extrañarlo y saber que hice lo correcto no se contradicen — puedo sentir las dos cosas a la vez, y ninguna anula a la otra."</p>
+              <p>"Probé Tu Primer Control del Impulso™ hoy y algo se me acomodó en la cabeza. Durante semanas pensé que si todavía lo extrañaba tanto, era porque en el fondo no debería haber cortado el contacto. Ahora me doy cuenta de que extrañarlo y saber que hice lo correcto no se contradicen — puedo sentir las dos cosas a la vez, y ninguna anula a la otra."</p>
               <span class="testimonio-nombre">— Camila</span>
             </div>
             <div class="testimonio-card" data-idx="2">
-              <p>"Acabo de usar Tu Primer Control del Impulso™ y... yo antes pensaba que necesitaba fuerza de voluntad sobrehumana para no escribirle, algo que sentía que nunca me iba a alcanzar. Ahora me doy cuenta de que solo necesitaba algo concreto para hacer en esos 60 segundos — no más disciplina, sino un plan. Con eso, alcanzó."</p>
+              <p>"Hice Tu Primer Control del Impulso™ apenas sentí el impulso, y quiero contarlo. Estaba convencida de que necesitaba fuerza de voluntad sobrehumana para no escribirle, algo que sentía que nunca me iba a alcanzar. Resulta que solo necesitaba algo concreto para hacer en esos 60 segundos — no más disciplina, sino un plan. Con eso, alcanzó."</p>
               <span class="testimonio-nombre">— Daniela</span>
             </div>
             <div class="testimonio-card" data-idx="3">
-              <p>"Acabo de usar Tu Primer Control del Impulso™ y... yo antes pensaba que estaba fallando porque todavía sentía el impulso después de tanto tiempo de contacto cero. Ahora me doy cuenta de que el impulso no desaparece de un día para el otro — pero sí se puede atravesar sin ceder, una y otra vez, hasta que empiece a pesar menos."</p>
+              <p>"Terminé de hacer Tu Primer Control del Impulso™ y me quedé pensando. Creía que estaba fallando porque todavía sentía el impulso después de tanto tiempo de contacto cero. Ahora sé que el impulso no desaparece de un día para el otro — pero sí se puede atravesar sin ceder, una y otra vez, hasta que empiece a pesar menos."</p>
               <span class="testimonio-nombre">— Florencia</span>
             </div>
             <div class="testimonio-card" data-idx="4">
-              <p>"Acabo de usar Tu Primer Control del Impulso™ y... yo antes pensaba que el impulso siempre iba a terminar ganando, tarde o temprano, sin importar cuánto lo intentara. Ahora me doy cuenta de que podía interrumpirlo justo en el momento, antes de que tomara el control — solo necesitaba saber qué hacer en ese instante exacto."</p>
+              <p>"Usé Tu Primer Control del Impulso™ en medio de un momento bastante fuerte, y funcionó. Antes pensaba que el impulso siempre iba a terminar ganando, tarde o temprano, sin importar cuánto lo intentara. Ahora sé que podía interrumpirlo justo en el momento, antes de que tomara el control — solo necesitaba saber qué hacer en ese instante exacto."</p>
               <span class="testimonio-nombre">— Julieta</span>
             </div>
             <div class="testimonio-card" data-idx="5">
-              <p>"Acabo de usar Tu Primer Control del Impulso™ y... yo antes pensaba que tenía que estar completamente recuperada para poder sostener el contacto cero de verdad. Ahora me doy cuenta de que puedo sostenerlo aunque todavía esté en pleno proceso, un minuto a la vez, sin esperar a sentirme 100% lista."</p>
+              <p>"Acabo de terminar Tu Primer Control del Impulso™ y lo quiero compartir. Tenía la idea de que necesitaba estar completamente recuperada para poder sostener el contacto cero de verdad. Ahora me doy cuenta de que puedo sostenerlo aunque todavía esté en pleno proceso, un minuto a la vez, sin esperar a sentirme 100% lista."</p>
               <span class="testimonio-nombre">— Micaela</span>
             </div>
           </div>

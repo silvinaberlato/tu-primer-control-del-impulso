@@ -77,6 +77,17 @@ export default async function handler(req, res) {
   </div>
   `;
 
+  // Versión en texto plano del mismo email. Los emails que SOLO tienen HTML,
+  // sin ninguna alternativa de texto, son una señal que muchos filtros de
+  // spam (incluido Gmail) usan para desconfiar más del remitente — sobre
+  // todo si el dominio es nuevo, como el nuestro. Mandar las dos versiones
+  // juntas (multipart) es una mejora real, no solo estética.
+  const emailTexto =
+    `${saludo} gracias por dar este paso.\n\n` +
+    `Vas a atravesar una mini experiencia guiada de 3 pasos: primero tu Checklist de Emergencia de 60 Segundos real, y después una probadita de otras dos herramientas del sistema.\n\n` +
+    `Entra ahora mismo desde este link: https://tu-primer-control-del-impulso.vercel.app/herramienta\n\n` +
+    `Te toma unos 3 minutos, y vas a salir con algo concreto en la mano.`;
+
   // 1) Mandar el email de bienvenida
   let emailEnviado = true;
   try {
@@ -90,7 +101,8 @@ export default async function handler(req, res) {
         from: FROM_EMAIL,
         to: [email],
         subject: subject,
-        html: emailHtml
+        html: emailHtml,
+        text: emailTexto
       })
     });
 
