@@ -2,6 +2,9 @@
 // Fase 3: conectado con Resend para (1) mandar el email de bienvenida y
 // (2) guardar el contacto en la Audience, para poder mandarle campañas
 // más adelante.
+// Fase 4: además dispara el evento "lead.capturado" en Resend, que arranca
+// la automatización de recuperación de carrito abandonado (6 emails a lo
+// largo de 6 días) armada en Resend Automations.
 //
 // La API key se lee desde las variables de entorno del proyecto en Vercel —
 // NUNCA está escrita acá. El ID de la Audience SÍ puede ir directo en el
@@ -142,9 +145,40 @@ export default async function handler(req, res) {
     console.error('Error al llamar a Resend (guardar contacto):', err);
   }
 
+  // 3) Disparar el evento "lead.capturado" en Resend, que arranca la
+  // automatización de recuperación de carrito abandonado (6 emails a lo
+  // largo de 6 días). Igual que los pasos anteriores, si esto falla no
+  // afecta el acceso a la herramienta — es un beneficio extra, no un candado.
+  let eventoDisparado = true;
+  try {
+    const eventResponse = await fetch('https://api.resend.com/events/send', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${RESEND_API_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        event: 'lead.capturado',
+        email: email,
+        payload: {
+          nombre: primerNombre || ''
+        }
+      })
+    });
+
+    if (!eventResponse.ok) {
+      eventoDisparado = false;
+      const errorBody = await eventResponse.text();
+      console.error('Resend respondió con error al disparar el evento:', eventResponse.status, errorBody);
+    }
+  } catch (err) {
+    eventoDisparado = false;
+    console.error('Error al llamar a Resend (disparar evento):', err);
+  }
+
   // SIEMPRE devolvemos success:true. El acceso a la herramienta nunca debe
   // depender de que Resend haya funcionado bien — es un beneficio extra,
   // no un candado. El estado real de cada llamada queda en los logs de
   // Vercel para que puedas revisarlo si algo falla.
-  return res.status(200).json({ success: true, emailEnviado, contactoGuardado });
+  return res.status(200).json({ success: true, emailEnviado, contactoGuardado, eventoDisparado });
 }
