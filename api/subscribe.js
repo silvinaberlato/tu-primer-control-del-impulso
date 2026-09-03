@@ -69,7 +69,7 @@ export default async function handler(req, res) {
       </p>
 
       <div style="text-align:center;">
-        <a href="https://tu-primer-control-del-impulso.vercel.app/herramienta"
+        <a href="https://contactocero.tuherramientadigital.com/herramienta"
            style="display:inline-block; background-color:#8A3E22; color:#F5EDE3; text-decoration:none;
                   font-weight:bold; font-size:16px; padding:16px 28px; border-radius:12px;">
           Empezar mi Control del Impulso
@@ -88,7 +88,7 @@ export default async function handler(req, res) {
   const emailTexto =
     `${saludo} gracias por dar este paso.\n\n` +
     `Vas a atravesar una mini experiencia guiada de 3 pasos: primero tu Checklist de Emergencia de 60 Segundos real, y después una probadita de otras dos herramientas del sistema.\n\n` +
-    `Entra ahora mismo desde este link: https://tu-primer-control-del-impulso.vercel.app/herramienta\n\n` +
+    `Entra ahora mismo desde este link: https://contactocero.tuherramientadigital.com/herramienta\n\n` +
     `Te toma unos 3 minutos, y vas a salir con algo concreto en la mano.`;
 
   // 1) Mandar el email de bienvenida
