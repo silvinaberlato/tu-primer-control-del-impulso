@@ -53,6 +53,13 @@
     box-shadow:0 30px 60px -24px rgba(107,52,32,0.28);
   }
 
+  .brand-tag{
+    display:block; font-family:'Sora', sans-serif; font-size:12.5px; font-weight:700;
+    letter-spacing:0.06em; text-transform:uppercase; color:var(--clay-deep);
+    margin-bottom:14px;
+    opacity:0; animation:fadeUp 600ms cubic-bezier(.23,1,.32,1) 0ms forwards;
+  }
+
   .eyebrow{
     display:inline-flex; align-items:center; gap:9px;
     background:var(--ink); color:var(--cream); border-radius:22px;
@@ -67,6 +74,8 @@
     margin-top:20px; font-size:clamp(1.55rem,4.2vw,2.15rem); line-height:1.2; color:var(--berry);
     opacity:0; animation:fadeUp 600ms cubic-bezier(.23,1,.32,1) 110ms forwards;
   }
+  h1 .highlight{ color:var(--sienna); font-weight:800; }
+
   .sub{
     margin-top:14px; font-size:1rem; line-height:1.6; color:var(--ink-soft);
     opacity:0; animation:fadeUp 600ms cubic-bezier(.23,1,.32,1) 180ms forwards;
@@ -134,8 +143,9 @@
 
 <div class="page-wrap">
   <div class="capture-card">
+    <span class="brand-tag">Protocolo de Resistencia al Contacto Cero™</span>
     <span class="eyebrow"><span class="dot"></span>Mini experiencia gratuita</span>
-    <h1>Siente cómo baja el impulso de escribirle — en los próximos 3 minutos</h1>
+    <h1>Siente cómo <span class="highlight">baja el impulso de escribirle a tu ex</span> — en los próximos 3 minutos</h1>
     <p class="sub">Una mini experiencia guiada de 3 minutos, gratis, que incluye tu Checklist de Emergencia de 60 Segundos real — para el momento exacto en que aparece la tentación. Pruébala ahora, antes de necesitarla de verdad.</p>
 
     <form id="capture-form">
