@@ -76,6 +76,11 @@ export default async function handler(req, res) {
         </a>
       </div>
 
+      <p style="font-size:12px; line-height:18px; color:#7A5240; text-align:center; margin:28px 0 0;">
+        ¿Tienes dudas? Responde a este email o escríbenos a
+        <a href="mailto:soporte@tuherramientadigital.com" style="color:#7A5240; text-decoration:underline;">soporte@tuherramientadigital.com</a>.
+      </p>
+
     </div>
   </div>
   `;
@@ -89,7 +94,8 @@ export default async function handler(req, res) {
     `${saludo} gracias por dar este paso.\n\n` +
     `Vas a atravesar una mini experiencia guiada de 3 pasos: primero tu Checklist de Emergencia de 60 Segundos real, y después una probadita de otras dos herramientas del sistema.\n\n` +
     `Entra ahora mismo desde este link: https://contactocero.tuherramientadigital.com/herramienta\n\n` +
-    `Te toma unos 3 minutos, y vas a salir con algo concreto en la mano.`;
+    `Te toma unos 3 minutos, y vas a salir con algo concreto en la mano.\n\n` +
+    `¿Tienes dudas? Responde a este email o escríbenos a soporte@tuherramientadigital.com.`;
 
   // 1) Mandar el email de bienvenida
   let emailEnviado = true;
@@ -102,6 +108,8 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         from: FROM_EMAIL,
+        // El remitente (hola@) no recibe correo: las respuestas llegan a soporte.
+        reply_to: 'soporte@tuherramientadigital.com',
         to: [email],
         subject: subject,
         html: emailHtml,

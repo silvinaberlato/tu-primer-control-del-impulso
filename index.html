@@ -199,6 +199,9 @@
       // La captura del email es un beneficio extra, nunca un candado.
     }
 
+    // Se guarda para prellenar el email en el checkout (ver herramienta/index.html).
+    try { localStorage.setItem('lead_email', email); } catch (err) {}
+
     window.location.href = '/herramienta/';
   });
 </script>

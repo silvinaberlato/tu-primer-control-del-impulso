@@ -733,5 +733,21 @@
   }
 </script>
 
+<script>
+// Los botones hacia la página de ventas llevan el email con el que la persona se registró, para que
+// el checkout de Hotmart lo tenga prellenado y compre con el mismo email.
+(function () {
+  try {
+    var email = (localStorage.getItem('lead_email') || '').trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+    document.querySelectorAll('a[href="https://contactocero.tuherramientadigital.com"]').forEach(function (a) {
+      var url = new URL(a.href);
+      url.searchParams.set('email', email);
+      a.href = url.toString();
+    });
+  } catch (e) {}
+})();
+</script>
+
 </body>
 </html>
